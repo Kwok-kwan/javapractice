@@ -1,30 +1,30 @@
 package com.kuo.thread.case13waitandnotify;
 
-
-
 /**
  * @Author GuoKunKun
- * @Description 生产者
- * @Date 2023/7/24 12:09
+ * @Description 消费者
+ * @Date 2023/7/24 12:19
  */
-public class Cook extends Thread {
+public class Foodie extends Thread{
     @Override
     public void run() {
-        while (true){
-            synchronized (Desk.lock){
-                if (Desk.count == 0){
+        while (true) {
+            synchronized (Desk.lock) {
+                if (Desk.count == 0) {
                     break;
                 } else {
-                    if (Desk.footFlag == 1){
+                    if (Desk.footFlag == 0){
                         try {
                             Desk.lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                    }else {
-                        System.out.println("厨师做了一碗面");
-                        Desk.footFlag = 1;
+
+                    } else {
+                        Desk.count--;
+                        System.out.println("吃货在吃面条，还能再吃"+Desk.count+"碗！！！");
                         Desk.lock.notifyAll();
+                        Desk.footFlag=0;
                     }
                 }
             }
