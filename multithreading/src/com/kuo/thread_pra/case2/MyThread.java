@@ -1,4 +1,4 @@
-package com.kuo.ThreadTest.case2;
+package com.kuo.thread_pra.case2;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.kuo.ThreadTest.case1;
+package com.kuo.thread_pra.case1;
 
 /**
  * @Author GuoKunKun
