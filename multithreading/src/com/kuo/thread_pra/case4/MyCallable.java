@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
  * @date 2023/7/28
  * @description 抽奖
  */
-public class MyCallable implements Callable {
+public class MyCallable implements Callable<Integer> {
     ArrayList<Integer> list;
 
     public MyCallable(ArrayList<Integer> list) {
@@ -21,7 +21,7 @@ public class MyCallable implements Callable {
 
 
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         // 如果有多个线程，可在run方法中新建List
         ArrayList<Integer> boxList = new ArrayList<>();
         while (true) {
